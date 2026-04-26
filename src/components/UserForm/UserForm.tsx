@@ -4,9 +4,9 @@ import css from './UserForm.module.css';
 type HobbiesValues =
   | 'reading'
   | 'films'
-  | 'travelling'
+  | 'traveling'
   | 'sport'
-  | 'musik'
+  | 'music'
   | 'cooking'
   | 'videogames'
   | 'another';
@@ -23,7 +23,7 @@ interface FormValues {
     city: string;
     postalCode: string;
   };
-  birthDate: Date;
+  birthDate: Date | string;
   sex: 'male' | 'female' | 'another';
   hobbies: HobbiesValues[];
   description: string;
@@ -42,7 +42,7 @@ const initialValues: FormValues = {
     city: '',
     postalCode: '',
   },
-  birthDate: new Date(),
+  birthDate: new Date().toISOString().split('T')[0],
   sex: 'male',
   hobbies: [],
   description: '',
@@ -62,7 +62,6 @@ const userSchema = yup.object().shape({
   phone: yup
     .string()
     .matches(/^\+380\d{9}$/, 'Номер має включати +380 та 9 цифр')
-    .length(13, 'Номер має складатись з 13 символів')
     .required('Номер телефону є обовя`зковим полем  '),
   password: yup
     .string()
@@ -87,7 +86,7 @@ const userSchema = yup.object().shape({
       .matches(/^\d+$/, 'Мають бути тільки цифри'),
   }),
 
-  birthDate: yup.string().required("Дата народження обов'язкове поле"),
+  birthDate: yup.date().required("Дата народження обов'язкове поле"),
 
   sex: yup
     .string()
@@ -102,7 +101,7 @@ const userSchema = yup.object().shape({
           'reading',
           'films',
           'sport',
-          'musik',
+          'music',
           'cooking',
           'traveling',
           'videogames',
@@ -249,22 +248,20 @@ export const UserForm = () => {
                   component="p"
                 />
               </label>
-              <label className={css.label}>
-                Введіть стать:
-                <label className={css.radioLabel}>
-                  <Field type="radio" value="male" name="sex" />
-                  Чоловіча
-                </label>
-                <label className={css.radioLabel}>
-                  <Field type="radio" value="female" name="sex" />
-                  Жіноча
-                </label>
-                <label className={css.radioLabel}>
-                  <Field type="radio" value="another" name="sex" />
-                  Інше
-                </label>
-                <ErrorMessage name="sex" className={css.error} component="p" />
+              <p className={css.label}>Введіть стать:</p>
+              <label className={css.radioLabel}>
+                <Field type="radio" value="male" name="sex" />
+                Чоловіча
               </label>
+              <label className={css.radioLabel}>
+                <Field type="radio" value="female" name="sex" />
+                Жіноча
+              </label>
+              <label className={css.radioLabel}>
+                <Field type="radio" value="another" name="sex" />
+                Інше
+              </label>
+              <ErrorMessage name="sex" className={css.error} component="p" />
               <label className={css.label}>
                 Введіть хобі:
                 <label className={css.checkboxLabel}>
@@ -279,7 +276,7 @@ export const UserForm = () => {
                   <Field type="checkbox" value="sport" name="hobbies" /> Спорт
                 </label>
                 <label className={css.checkboxLabel}>
-                  <Field type="checkbox" value="musik" name="hobbies" /> Музика
+                  <Field type="checkbox" value="music" name="hobbies" /> Музика
                 </label>
                 <label className={css.checkboxLabel}>
                   <Field type="checkbox" value="cooking" name="hobbies" />
