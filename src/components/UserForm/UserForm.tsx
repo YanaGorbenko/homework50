@@ -262,43 +262,42 @@ export const UserForm = () => {
                 Інше
               </label>
               <ErrorMessage name="sex" className={css.error} component="p" />
-              <label className={css.label}>
-                Введіть хобі:
-                <label className={css.checkboxLabel}>
-                  <Field type="checkbox" value="reading" name="hobbies" />
-                  Читання
-                </label>
-                <label className={css.checkboxLabel}>
-                  <Field type="checkbox" value="films" name="hobbies" />{' '}
-                  Перегляд фільмів / серіалів
-                </label>
-                <label className={css.checkboxLabel}>
-                  <Field type="checkbox" value="sport" name="hobbies" /> Спорт
-                </label>
-                <label className={css.checkboxLabel}>
-                  <Field type="checkbox" value="music" name="hobbies" /> Музика
-                </label>
-                <label className={css.checkboxLabel}>
-                  <Field type="checkbox" value="cooking" name="hobbies" />
-                  Кулінарія
-                </label>
-                <label className={css.checkboxLabel}>
-                  <Field type="checkbox" value="traveling" name="hobbies" />
-                  Подорожі
-                </label>
-                <label className={css.checkboxLabel}>
-                  <Field type="checkbox" value="videogames" name="hobbies" />
-                  Відеоігри
-                </label>
-                <label className={css.checkboxLabel}>
-                  <Field type="checkbox" value="another" name="hobbies" /> Інше
-                </label>
-                <ErrorMessage
-                  name="hobbies"
-                  className={css.error}
-                  component="p"
-                />
+              <p className={css.label}> Введіть хобі: </p>
+              <label className={css.checkboxLabel}>
+                <Field type="checkbox" value="reading" name="hobbies" />
+                Читання
               </label>
+              <label className={css.checkboxLabel}>
+                <Field type="checkbox" value="films" name="hobbies" /> Перегляд
+                фільмів / серіалів
+              </label>
+              <label className={css.checkboxLabel}>
+                <Field type="checkbox" value="sport" name="hobbies" /> Спорт
+              </label>
+              <label className={css.checkboxLabel}>
+                <Field type="checkbox" value="music" name="hobbies" /> Музика
+              </label>
+              <label className={css.checkboxLabel}>
+                <Field type="checkbox" value="cooking" name="hobbies" />
+                Кулінарія
+              </label>
+              <label className={css.checkboxLabel}>
+                <Field type="checkbox" value="traveling" name="hobbies" />
+                Подорожі
+              </label>
+              <label className={css.checkboxLabel}>
+                <Field type="checkbox" value="videogames" name="hobbies" />
+                Відеоігри
+              </label>
+              <label className={css.checkboxLabel}>
+                <Field type="checkbox" value="another" name="hobbies" /> Інше
+              </label>
+              <ErrorMessage
+                name="hobbies"
+                className={css.error}
+                component="p"
+              />
+
               <label className={css.label}>
                 <span>Про себе: </span>
                 <Field
